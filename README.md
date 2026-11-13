@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flashcard
 
-## Getting Started
+Монгол, англи үгтэй багц үүсгэж, орчуулга бичиж дасгал хийх апп.
 
-First, run the development server:
+## Ажиллуулах
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Node.js 22.13+ эсвэл 24 ашиглана.
+
+Backend (`../flashcard-be`):
+
+```sh
+npm install
+cp .env.example .env
+# .env дотор MONGODB_URI болон JWT_SECRET тохируулна.
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Одоо байгаа `.env` файлыг дарж хуулж болохгүй. Backend MongoDB-тэй холбогдсоны дараа 7878 порт дээр асна.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Frontend (энэ хавтас):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```sh
+npm install
+npm run dev
+```
 
-## Learn More
+http://localhost:3000 нээнэ. API хаягийг өөрчлөх бол `.env.local` дотор `NEXT_PUBLIC_API_URL` тохируулна (`.env.example` харна уу).
 
-To learn more about Next.js, take a look at the following resources:
+Бүртгүүлэх → нэвтрэх → багц үүсгэх → Багцууд цэсээс дасгал хийх. Хэрэглэгч өөрийн багцуудыг харна. Нэвтрэх эрх 1 цагийн дараа дуусна.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Шалгах
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```sh
+npm run lint
+npm run build
+```
 
-## Deploy on Vercel
+Backend хавтсанд `npm test`: MongoDB-г орлуулсан API тест, бодит өгөгдөл өөрчлөхгүй.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Энэ орчинд Turbopack порт нээхэд алдаа гаргасан тул dev/build нь Webpack ашиглана.
