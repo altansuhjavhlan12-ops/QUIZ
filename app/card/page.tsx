@@ -76,6 +76,9 @@ export default function Page() {
         method: "DELETE",
         headers: { Authorization: `Bearer ${user.token}` },
       });
+      if (!res.headers.get("content-type")?.includes("application/json")) {
+        throw new Error("Устгах API-аас буруу хариу ирлээ. Backend-ээ дахин асаагаад оролдоно уу.");
+      }
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Quiz устгахад алдаа гарлаа");
       setCards((previous) => previous.filter((item) => item._id !== card._id));
